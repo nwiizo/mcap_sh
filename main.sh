@@ -6,7 +6,7 @@ MEM_LIMIT=80
 MEM_USED=`free | grep Mem | awk '{ print 100 + ($3-$6-$7)/$2*100 }'`
 
 Check-memory(){
-    if [ $MEM_USED > $MEM_LIMIT ]; then
+    if [ $MEM_USED -lt $MEM_LIMIT ]; then
         echo "$target_host memory over  $MEM_USED %"
         exit
     fi
@@ -15,7 +15,6 @@ Check-memory(){
 
 Action_process(){
     echo "Action process"
-    sleep 5
 }
 
 if echo ${target_host}|grep ; then
