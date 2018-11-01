@@ -3,7 +3,7 @@ export LANG=en_US.UTF-8
 target_host=$(hostname)
 # Implemented at 80% or more
 MEM_LIMIT=80
-MEM_USED=`free | grep Mem | awk '{ print ($3-$6-$7)/$2*100 }'`
+MEM_USED=`free | grep Mem | awk '{ print 100 + ($3-$6-$7)/$2*100 }'`
 
 Check-memory(){
     if [ $MEM_USED > $MEM_LIMIT ]; then
